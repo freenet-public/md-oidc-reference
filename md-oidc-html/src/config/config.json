@@ -1,0 +1,22 @@
+{
+    "md.freenet.local": {
+        "oidcBaseUrl": "https://identity-test.mobilcom-debitel.de/v2/oidc",
+        "clientId": "${client_id}",
+        "redirectUri": "https://md.freenet.local:7890/index.html",
+        "logoutRedirectUrl": "https://md.freenet.local:7890/index.html",
+        "frameRedirectUrl": "https://md.freenet.local:7890/frame-callback.html",
+        "delayAuthenticationProcess": 5,
+        "checkInterval": 5,
+        "revalidate": 20
+    },
+    "md.singer-tc.de": {
+        "oidcBaseUrl": "https://identity.mobilcom-debitel.de/v2/oidc",
+        "clientId": "${client_id}",
+        "redirectUri": "https://md.singer-tc.de/index.html",
+        "logoutRedirectUrl": "https://md.singer-tc.de/index.html",
+        "frameRedirectUrl": "https://md.singer-tc.de/frame-callback.html",
+        "delayAuthenticationProcess": 5,
+        "checkInterval": 5,
+        "revalidate": 20
+    }
+}

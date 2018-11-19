@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Softlogin check im iFrame</title>
+    <script type="application/javascript">
+        // Gets the origin from a uri */
+        function getOrigin(uri) {
+            var e = uri.indexOf('/', 8);
+            return e !== -1 ? uri.substring(0, uri.indexOf('/', 8)) : uri;
+        }
+        // Check if running in iFrame
+        function inIframe () {
+            try {
+                return window.self !== window.top;
+            } catch (e) {
+                return true;
+            }
+        }
+
+        if (!inIframe()) {
+            console.log("Not running in an iframe, quit.");
+        } else {
+            // get the origin of the referring window
+            const sourceOrigin = getOrigin(document.location.href);
+
+            // trigger the post message event
+            window.parent.postMessage(window.location.href, sourceOrigin);
+        }
+
+    </script>
+</head>
+<body>
+<h2>Softlogin check im iFrame</h2>
+<strong>Must be loaded inside an iframe.</strong>
+</body>
+</html>

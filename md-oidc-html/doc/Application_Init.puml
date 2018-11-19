@@ -1,0 +1,59 @@
+@startuml
+
+start
+
+(A)
+:Applikation Initialisieren;
+:1. OIDC Callback Verarbeitung;
+note right
+    Herausfinden, ob SPA aus einem Callback
+    aufgerufen wurde oder nicht.
+end note
+
+if (Gültiges OIDC Callback erkannt?) then (Ja)
+    :Navigation sperren;
+    :OIDC Token erzeugen;
+    note right
+        Kann sowohl Softlogin
+        als auch normales
+        Token sein
+    end note
+    :2. Benutzerdaten verarbeiten;
+    :Navigation entsperren;
+elseif  (Gültiges Access Token im Session Store?) then (Ja)
+    :Navigation sperren;
+    :2. Benutzerdaten verarbeiten;
+    :Navigation entsperren;
+else (Nein)
+    :3. Softlogin versuchen (iFrame);
+    if (Softlogin erfolgreich?) then (Ja)
+        :Navigation sperren;
+        :OIDC Token erzeugen;
+        note
+            Kann sowohl Softlogin
+            als auch normales
+            Token sein
+        end note
+        :2. Benutzerdaten verarbeiten;
+        :Navigation entsperren;
+    endif
+
+endif
+
+if (Kein Token oder nur Softlogin?) then (Ja)
+    fork
+    :4. Loginform anzeigen (iFrame);
+    (A)
+    detach;
+    fork again
+    :Applikation intialisiert (ohne Benutzer);
+    detach;
+    end fork
+endif
+
+:5. Session Managenent initialisieren;
+:Applikation initialisiert (mit Benutzer);
+
+end
+
+@enduml

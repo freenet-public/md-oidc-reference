@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mobilcom-Debitel OIDC Client Reference</title>
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="Mobilcom-Debitel OIDC Client Reference">
+    <meta name="Description" content="A simple OIDC Client with iFrames."/>
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Mobilcom-Debitel OIDC Client Reference" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://identity.mobilcom-debitel.de/" />
+    <meta property="og:description" content="A simple OIDC Client with iFrames." />
+    <!-- Mobile header color for Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#ff4970">
+    <!-- Mobile header color Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#ff4970">
+    <!-- Mobile header color for iOS Safari (supports black, black-translucent or default) -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container">
+    <div class="card mt-3">
+        <div class="card-header">
+            OIDC Beispiel: HTML/JS
+        </div>
+        <div class="card-body">
+            <p class="lead">Dieses Beispiel zeigt die Authentifierung über OIDC mittels JavaScript und anschließendem Session Check (Single-Log-Out).</p>
+            <div class="row">
+                <div class="col-4 font-weight-bold text-nowrap">Benutzerstatus</div>
+                <div class="col-8" id="userStatus"><span class="badge badge-danger">Nicht eingeloggt</span></div>
+                <div class="w-100"></div>
+                <div class="col-4 font-weight-bold text-nowrap">Login Level</div>
+                <div class="col-8 col-sm-4" id="softloginStatus"><span class="badge badge-danger">Nicht eingeloggt</span></div>
+                <div class="w-100"></div>
+                <div class="col-4 font-weight-bold text-nowrap">Letzter Session Status</div>
+                <div class="col-8" id="sessionState"><span class="badge badge-danger">Nicht eingeloggt</span></div>
+            </div>
+            <p class="mt-3 font-weight-bold text-nowrap">Normale Login Buttons / Links (Redirect)</p>
+            <a class="btn btn-sm btn-primary" href="#" id="loginButton" role="button">Login &raquo;</a>
+            <a class="btn btn-sm btn-primary d-none" href="#" id="forceLoginButton" role="button">Force Re-Login &raquo;</a>
+            <a class="btn btn-sm btn-secondary d-none" href="#" id="logoutButton" role="button">Logout &raquo;</a>
+            <span id="loginSpinner" class="collapse"><i class="fas fa-sync fa-spin"></i> Anmeldung läuft...</span>
+            <p class="mt-4 font-weight-bold text-nowrap">Login iFrame</p>
+            <div class="mt-3 w-100">
+                <iframe id="login" frameborder="0" scrolling="no" class="w-100 p-3" style="height: 250px; border: 1px solid darkgrey; display: none; background-color: white">
+                </iframe>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="waitForAuth" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p><i class="fas fa-sync fa-spin"></i> <strong>Sie werden gerade angemeldet, einen Moment bitte... </strong></p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
