@@ -1,6 +1,6 @@
 # OIDC Referenz und Beispiel Implementierungen
 
-Siehe [OIDC/MLP JavaScript Client: Referenz-Implementierung](https://kiwi.freenet-group.de/x/zAfPMw)
+Beispiel Implementierungen for den Mobilcom-Debitel OpenId Connect Service (OIDC).
 
 ## ms-oidc-js
 
